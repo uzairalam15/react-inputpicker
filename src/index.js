@@ -10,4 +10,14 @@ class ReactInputPicker extends React.PureComponent {
   }
 }
 
-ReactDOM.render(<ReactInputPicker />, document.getElementById("root"));
+ReactDOM.render(
+  <ReactInputPicker
+    onDropdownClick={() => {
+      console.log("testing logic bc");
+    }}
+    onValueRemove={() => {
+      console.log("testing removal");
+    }}
+  />,
+  document.getElementById("root")
+);

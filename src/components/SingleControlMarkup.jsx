@@ -9,7 +9,7 @@ export default class SingleControlMarkup extends PureComponent {
   render() {
     return (
       <div className="iconDiv" onClick={this.props.onClick}>
-        <FontAwesomeIcon icon={this.props.icon} size="md" />
+        <FontAwesomeIcon icon={this.props.icon} size={this.props.iconSize} />
       </div>
     );
   }
@@ -24,5 +24,5 @@ SingleControlMarkup.defaultProps = {
 SingleControlMarkup.propTypes = {
   icon: PropTypes.object,
   iconSize: PropTypes.oneOf(iconSizes),
-  onClick: PropTypes.onClick
+  onClick: PropTypes.func
 };
