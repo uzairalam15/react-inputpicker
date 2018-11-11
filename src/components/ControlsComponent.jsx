@@ -22,7 +22,11 @@ export default class ControlsComponent extends PureComponent {
 
   getControlMarkup = (width, control, key) => {
     return (
-      <div className={`col-xs-${width} center-xs`} key={key}>
+      <div
+        className={`col-xs-${width} center-xs controlDiv`}
+        onClick={control.onClick}
+        key={key}
+      >
         <SingleControlMarkup {...control} />
       </div>
     );
@@ -41,13 +45,20 @@ export default class ControlsComponent extends PureComponent {
     return controls;
   };
 
+  getMarkup = () => {
+    const { containerWidth, activeNumberOfControls } = this.props;
+    if (activeNumberOfControls) {
+      return (
+        <div className={`col-xs-${containerWidth} noPadding`}>
+          <div className="row full-height">{this.getControls()}</div>
+        </div>
+      );
+    }
+    return null;
+  };
+
   render() {
-    const { containerWidth } = this.props;
-    return (
-      <div className={`col-xs-${containerWidth}`}>
-        <div className="row full-height">{this.getControls()}</div>
-      </div>
-    );
+    return this.getMarkup();
   }
 }
 
@@ -58,6 +69,8 @@ ControlsComponent.defaultProps = {
   removeIcon: faTimes,
   dropdownIcon: faCaretDown,
   iconSize: defaultIconSize,
+  onValueRemove: function() {},
+  onDropdownClick: function() {},
   activeNumberOfControls: controlsMap.length
 };
 

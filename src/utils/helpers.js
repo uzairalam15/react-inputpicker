@@ -4,19 +4,31 @@ export function capitalizeFirstLetter(string) {
   );
 }
 
-export function getContainerWidths(totalWidthOfContainer, controlsMap, props) {
+export function getContainerWidths(
+  totalWidthOfContainer,
+  controlsMap,
+  props,
+  state
+) {
   let inputContainerWidth = totalWidthOfContainer;
   let controlsContainerWidth = 0;
+  let activeNumberOfControls = 0;
   if (!props.disableControls) {
     controlsMap.forEach(control => {
-      if (!props[control.controlDisableProp]) {
+      if (
+        !(
+          props[control.controlDisableProp] || state[control.controlDisableProp]
+        )
+      ) {
         inputContainerWidth -= props.controlWidth;
         controlsContainerWidth += props.controlWidth;
+        activeNumberOfControls += 1;
       }
     });
   }
   return {
     inputContainerWidth,
-    controlsContainerWidth
+    controlsContainerWidth,
+    activeNumberOfControls
   };
 }

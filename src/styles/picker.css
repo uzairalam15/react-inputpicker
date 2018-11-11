@@ -2,6 +2,8 @@
   border: 0px;
   font-size: 16px;
   padding: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
   width: 100%;
   border: 0;
 }
@@ -12,7 +14,12 @@
 }
 
 .react-picker-container {
-  width: 50%;
+  width: 20%;
+}
+
+.react-picker-container .row {
+  width: 100%;
+  margin: 0px;
 }
 
 .react-picker-container .input-container {
@@ -23,6 +30,15 @@
 
 .react-picker-container .input-container .iconDiv {
   padding-top: 15px;
+  background-color: transparent;
+}
+
+.react-picker-container .input-container .controlDiv {
+  background-color: transparent;
+}
+
+.react-picker-container .input-container .controlDiv:hover {
+  background-color: #8a7d7d1f;
 }
 
 .react-picker-container .input-container:focus-within {
@@ -63,6 +79,10 @@
 
 .dropdown a:hover {
   background-color: #ddd;
+}
+
+.noPadding {
+  padding: 0px;
 }
 
 .show {
