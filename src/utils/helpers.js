@@ -4,6 +4,16 @@ export function capitalizeFirstLetter(string) {
   );
 }
 
+export function filterFunction(value, data = [], options = {}) {
+  return data.filter(item => {
+    var val = item.value || "";
+    if (options.trim) val = val.trim();
+    if (options.exactMatch) return val === value;
+    if (options.strictMatch) return val.includes(value);
+    return val.toLowerCase().includes(value.toLowerCase());
+  });
+}
+
 export function getContainerWidths(
   totalWidthOfContainer,
   controlsMap,

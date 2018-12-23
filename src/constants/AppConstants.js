@@ -51,3 +51,9 @@ export const testData = [
     value: "Text3"
   }
 ];
+
+export const filterOptions = {
+  trim: true,
+  strictMatch: false,
+  exactMatch: false
+};

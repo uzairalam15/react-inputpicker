@@ -9,6 +9,7 @@ import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 //constants
 import {
   totalWidthOfContainer,
+  filterOptions,
   controlWidth,
   controlsMap,
   testData
@@ -16,7 +17,7 @@ import {
 
 //helpers
 
-import { getContainerWidths } from "../utils/helpers";
+import { getContainerWidths, filterFunction } from "../utils/helpers";
 
 export default class InputPickerComponent extends PureComponent {
   constructor(props) {
@@ -50,9 +51,7 @@ export default class InputPickerComponent extends PureComponent {
       <DropdownListComponent
         data={this.state.data}
         show={this.state.showDropdown}
-        onOptionClick={option => {
-          console.log(option);
-        }}
+        onOptionClick={this.props.onOptionClick}
       />
     ) : null;
   };
@@ -87,10 +86,18 @@ export default class InputPickerComponent extends PureComponent {
     this.setState({ value: "", showDropdown: false, disableRemove: true });
   };
 
+  checkFilterFunction = (value, data) => {
+    const filterFunction = this.props.filterFunction;
+    return value ? filterFunction(value, testData, filterOptions) : testData;
+  };
+
   setValue = e => {
     const value = e.target.value;
+    const data = this.checkFilterFunction(value, this.props.data);
+    console.log("data", data);
     this.setState({
       value,
+      data,
       showDropdown: !!value,
       disableRemove: !value
     });
@@ -130,13 +137,17 @@ InputPickerComponent.defaultProps = {
   disableRemove: false,
   disableDropdown: false,
   controlWidth: controlWidth,
+  filterFunction: filterFunction,
+  onOptionClick: function() {},
   data: []
 };
 
 InputPickerComponent.propTypes = {
-  disableControls: PropTypes.bool,
-  disableRemove: PropTypes.bool,
-  disableDropdown: PropTypes.bool,
-  controlWidth: PropTypes.number,
-  data: PropTypes.array
+  disableControls: PropTypes.bool, // Makes it normal input box without controls and dropdown if disable is set to true
+  disableRemove: PropTypes.bool, // Remove the cross icons from input box
+  disableDropdown: PropTypes.bool, // dropdown will not appear
+  controlWidth: PropTypes.number, // Represents the column area input will take
+  data: PropTypes.array, // data to show in a dropdown
+  filterFunction: PropTypes.func, // filter function to override default filtering
+  onOptionClick: PropTypes.func // trigger when option is selected
 };
