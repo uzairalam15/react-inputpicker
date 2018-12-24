@@ -14,6 +14,16 @@ export function filterFunction(value, data = [], options = {}) {
   });
 }
 
+export function getIndexOfKey(array, key = "id", value) {
+  const len = array.length;
+  for (let i = 0; i < len; i++) {
+    if (array[i][key] === value) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 export function getContainerWidths(
   totalWidthOfContainer,
   controlsMap,

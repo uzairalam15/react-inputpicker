@@ -26,7 +26,7 @@ export default class InputPickerComponent extends PureComponent {
       value: "",
       showDropdown: false,
       disableRemove: true,
-      data: testData
+      data: props.data || []
     };
   }
 
@@ -46,12 +46,21 @@ export default class InputPickerComponent extends PureComponent {
     ) : null;
   };
 
+  onOptionSelect = payload => {
+    const value = payload.value;
+    this.props.onOptionSelect(payload);
+    this.setState({
+      value,
+      showDropdown: false
+    });
+  };
+
   getDropdownList = () => {
     return !(this.props.disableControls || this.props.disableDropdown) ? (
       <DropdownListComponent
         data={this.state.data}
         show={this.state.showDropdown}
-        onOptionClick={this.props.onOptionClick}
+        onOptionSelect={this.onOptionSelect}
       />
     ) : null;
   };
@@ -83,18 +92,22 @@ export default class InputPickerComponent extends PureComponent {
     if (this.props.onValueRemove) {
       this.props.onValueRemove();
     }
-    this.setState({ value: "", showDropdown: false, disableRemove: true });
+    this.setState({
+      value: "",
+      data: this.props.data,
+      showDropdown: false,
+      disableRemove: true
+    });
   };
 
   checkFilterFunction = (value, data) => {
     const filterFunction = this.props.filterFunction;
-    return value ? filterFunction(value, testData, filterOptions) : testData;
+    return value ? filterFunction(value, data, filterOptions) : data;
   };
 
   setValue = e => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     const data = this.checkFilterFunction(value, this.props.data);
-    console.log("data", data);
     this.setState({
       value,
       data,
@@ -138,8 +151,8 @@ InputPickerComponent.defaultProps = {
   disableDropdown: false,
   controlWidth: controlWidth,
   filterFunction: filterFunction,
-  onOptionClick: function() {},
-  data: []
+  onOptionSelect: function() {},
+  data: testData
 };
 
 InputPickerComponent.propTypes = {
@@ -149,5 +162,5 @@ InputPickerComponent.propTypes = {
   controlWidth: PropTypes.number, // Represents the column area input will take
   data: PropTypes.array, // data to show in a dropdown
   filterFunction: PropTypes.func, // filter function to override default filtering
-  onOptionClick: PropTypes.func // trigger when option is selected
+  onOptionSelect: PropTypes.func // trigger when option is selected
 };
