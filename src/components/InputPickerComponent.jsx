@@ -102,7 +102,8 @@ export default class InputPickerComponent extends PureComponent {
 
   checkFilterFunction = (value, data) => {
     const filterFunction = this.props.filterFunction;
-    return value ? filterFunction(value, data, filterOptions) : data;
+    const options = Object.assign({}, filterOptions, this.props.filterOptions);
+    return value ? filterFunction(value, data, options) : data;
   };
 
   setValue = e => {
@@ -151,6 +152,7 @@ InputPickerComponent.defaultProps = {
   disableDropdown: false,
   controlWidth: controlWidth,
   filterFunction: filterFunction,
+  filterOptions: {},
   onOptionSelect: function() {},
   data: testData
 };
