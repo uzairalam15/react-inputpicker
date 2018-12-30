@@ -13,7 +13,7 @@ import {
 import { controlPropsNormalizer } from "../utils/normalizers";
 
 //components
-import SingleControlMarkup from "./SingleControlMarkup.jsx";
+import SingleControlMarkup from "./SingleControlMarkup";
 
 export default class ControlsComponent extends PureComponent {
   getControlMap = () => {

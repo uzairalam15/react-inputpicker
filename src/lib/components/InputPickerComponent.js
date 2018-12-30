@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, { PureComponent } from "react";
-import ControlsComponent from "./ControlsComponent.jsx";
-import DropdownListComponent from "./DropdownListComponent.jsx";
-import InputComponent from "./InputComponent.jsx";
+import ControlsComponent from "./ControlsComponent";
+import DropdownListComponent from "./DropdownListComponent";
+import InputComponent from "./InputComponent";
 
 //styles
 import "flexboxgrid/dist/flexboxgrid.min.css";
