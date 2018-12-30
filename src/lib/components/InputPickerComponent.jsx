@@ -4,6 +4,10 @@ import ControlsComponent from "./ControlsComponent.jsx";
 import DropdownListComponent from "./DropdownListComponent.jsx";
 import InputComponent from "./InputComponent.jsx";
 
+//styles
+import "flexboxgrid/dist/flexboxgrid.min.css";
+import "../styles/picker.css";
+
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
 //constants
