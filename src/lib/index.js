@@ -1,2 +1,2 @@
-import InputPickerComponent from "./components/InputPickerComponent.jsx";
+import InputPickerComponent from "./components/InputPickerComponent";
 export default InputPickerComponent;
