@@ -1,7 +1,8 @@
 {
-  "name": "react-inputpicker",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@uztech15/react-inputpicker",
+  "version": "1.0.0",
+  "description": "Two in one simple Input/autocomplete field in react",
+  "private": false,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",

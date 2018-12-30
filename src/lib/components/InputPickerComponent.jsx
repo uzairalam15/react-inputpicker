@@ -4,6 +4,10 @@ import ControlsComponent from "./ControlsComponent.jsx";
 import DropdownListComponent from "./DropdownListComponent.jsx";
 import InputComponent from "./InputComponent.jsx";
 
+//styles
+import "flexboxgrid/dist/flexboxgrid.min.css";
+import "../styles/picker.css";
+
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
 //constants
@@ -102,7 +106,8 @@ export default class InputPickerComponent extends PureComponent {
 
   checkFilterFunction = (value, data) => {
     const filterFunction = this.props.filterFunction;
-    return value ? filterFunction(value, data, filterOptions) : data;
+    const options = Object.assign({}, filterOptions, this.props.filterOptions);
+    return value ? filterFunction(value, data, options) : data;
   };
 
   setValue = e => {
@@ -151,6 +156,7 @@ InputPickerComponent.defaultProps = {
   disableDropdown: false,
   controlWidth: controlWidth,
   filterFunction: filterFunction,
+  filterOptions: {},
   onOptionSelect: function() {},
   data: testData
 };
