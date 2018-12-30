@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "Two in one simple Input/autocomplete field in react",
   "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uzairalam15/react-inputpicker"
+  },
   "main": "dist/index.js",
   "module": "dist/index.js",
   "babel": {
-    "presets": [
-      "react",
-      "env",
-      "stage-2"
-    ]
+    "presets": [ "react", "env", "stage-2" ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
