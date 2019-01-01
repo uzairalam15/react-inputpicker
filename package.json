@@ -1,6 +1,6 @@
 {
   "name": "react-inputpicker",
-  "version": "1.0.0",
+  "version": "1.0.2-beta",
   "description": "Two in one simple Input/autocomplete field in react",
   "private": false,
   "license": "MIT",

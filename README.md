@@ -1,8 +1,11 @@
 # React Input Picker
 
-![Input Picker](https://img.shields.io/badge/npm-v1.0.0-blue.svg) ![Input Picker](https://img.shields.io/badge/react-v%20%3E%3D%2016.x.x-green.svg)
+![Input Picker](https://img.shields.io/badge/npm-v1.0.2--beta-blue.svg) ![Input Picker](https://img.shields.io/badge/react-v%20%3E%3D%2016.x.x-green.svg)
 
 ![Input Picker](./SS/1.png)
+
+# Note:
+(This is a beta realese of this package and may contain some bugs. please for now refrain from using it in production)
 
 A simple Input picker for React with listing and selection. Future enhancements will include custom listing so that the user can apply custom styling to options and dropdown.
 
